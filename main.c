@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ncurses.h>
-#include "draw.h"
 
 
 
@@ -10,7 +9,19 @@ int main(void) {
     cbreak();
     noecho();
 
-    draw_rectangle(20, 50, 0, 5);
+    int row, col;
+    getmaxyx(stdscr, row, col);
 
+    WINDOW *win = newwin(row, col, 0, 0);
+
+    refresh();
+
+    box(win, 0, 0);
+
+    wrefresh(win);
+
+    getch();
+
+    endwin();
     return 0;
 }

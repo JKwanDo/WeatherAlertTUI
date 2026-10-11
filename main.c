@@ -9,6 +9,12 @@ int main(void) {
     cbreak();
     noecho();
 
+    if (has_colors() == FALSE) {
+        endwin();
+        printf("your terminal doesnt support color!");
+        exit(1);    
+    }
+
     int row, col;
     getmaxyx(stdscr, row, col);
 
@@ -17,6 +23,8 @@ int main(void) {
     refresh();
 
     box(win, 0, 0);
+    mvwprintw(win,  1, 1, "Hello World!");
+    mvwvline(win, 1, col / 2, ACS_VLINE, row - 2);
 
     wrefresh(win);
 

@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <ncurses.h>
 
-
+const char *string = "hello world!";
+int size_string = strlen(string);
 
 int main(void) {
     initscr();
@@ -32,7 +33,7 @@ int main(void) {
 
         box(win, 0, 0);
         wattron(win, COLOR_PAIR(1));
-        mvwprintw(win,  1, 1, "Hello World!");
+        mvwprintw(win,  1, 1, "%s", string);
         wattroff(win, COLOR_PAIR(1));
         mvwvline(win, 1, col / 2, ACS_VLINE, row - 2);
 
